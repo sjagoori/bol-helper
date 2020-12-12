@@ -9,11 +9,15 @@ const port = process.env.PORT || 3000;
 dotenv.config();
 let timestamp
 var dataset
+const fol1 = './fol1'
+const fol2 = './fol2'
+
+fs.existsSync(fol1) ? true : initialScrape(fol1, fol2)
 
 schedule.scheduleJob('0 0 * * *', function () {
   cleanUp(fol1)
   cleanUp(fol2)
-  initialScrape('./fol1', './fol2')
+  initialScrape(fol1, fol2)
   timestamp = new Date().toLocaleString('en-US', { hour12: false });
 });
 
@@ -54,7 +58,7 @@ function secondScrape(folderLoc, baseURL) {
     urls: [baseURL],
     directory: folderLoc
   }).then(() => {
-    let content = fs.readFileSync(fol2 + '/index.html', 'utf8');
+    let content = fs.readFileSync(folderLoc + '/index.html', 'utf8');
     let pageData = content.match(/var pageData =(.*)/gm)[0]
     let match = pageData.match(/(\d{16})/gm)
     dataset = [...new Set(match.map(key => parseInt(key)))]
