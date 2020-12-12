@@ -36,8 +36,11 @@ scrape({
 app.get("/", (req, res, next) => {
   // let key = req.query
   // if (key == process.env.API_KEY) {
-    res.setHeader('Content-Type', 'application/json');
-    res.json(dataset);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Content-Type', 'application/json');
+  res.json(dataset);
   // }
   // }else{
   //   res.redirect('/')
