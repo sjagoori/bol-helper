@@ -1,6 +1,6 @@
 # bol-helper
 
 Todo
-- [ ] Add proper promise logic
-- [ ] Add cron-like timeout
-- [ ] Add authentication using .env
+- [x] Add proper promise logic
+- [x] Add cron-like timeout
+- [x] Add authentication using .env
