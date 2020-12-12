@@ -4,6 +4,7 @@ const scrape = require('website-scraper');
 const dotenv = require('dotenv');
 dotenv.config();
 const fs = require('fs');
+const port = process.env.PORT || 3000;
 
 var dataset
 let fol1 = './fol1'
@@ -43,7 +44,7 @@ app.get("/", (req, res, next) => {
   // }
 });
 
-app.listen(80, () => {
+app.listen(port, () => {
   console.log("Server running on port 3000");
 });
 
