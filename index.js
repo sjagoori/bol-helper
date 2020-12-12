@@ -21,7 +21,7 @@ schedule.scheduleJob('0 0 * * *', function () {
   timestamp = new Date().toLocaleString('en-US', { hour12: false });
 });
 
-app.get('/t', (res) =>{
+app.get('/t', (req, res) =>{
   res.send(timestamp ? 'timestamp:\t' + timestamp : 'unset')
 })
 
